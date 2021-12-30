@@ -30,8 +30,8 @@ class MainActivity : AppCompatActivity() {
     private fun printCustomerDetails(customer: Customer){
         var customerDetails = ""
         customerDetails += "CUSTOMER\n"
-        customerDetails += "First Name: ${invoice.customer.firstName}\nLast Name: ${invoice.customer.lastName}\n"
-        customerDetails += "Address: ${invoice.customer.address}\n"
+        customerDetails += "First Name: ${customer.firstName}\nLast Name: ${customer.lastName}\n"
+        customerDetails += "Address: ${customer.address}\n"
         binding.tvInvoicePreview.append(customerDetails)
     }
 }
