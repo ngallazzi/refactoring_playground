@@ -30,4 +30,8 @@ class MainActivity : AppCompatActivity() {
         val invoiceHeader = "INVOICE N° ${invoice.number}, ${invoice.date}\n\n"
         binding.tvInvoicePreview.text = invoiceHeader
     }
+
+    private fun printCustomerDetails(){
+
+    }
 }
