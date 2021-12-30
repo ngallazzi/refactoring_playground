@@ -19,11 +19,7 @@ class MainActivity : AppCompatActivity() {
     private fun printInvoiceSheet(invoice: Invoice) {
         printInvoiceHeader(invoice)
         // print customer details
-        var customerDetails = ""
-        customerDetails += "CUSTOMER\n"
-        customerDetails += "First Name: ${invoice.customer.firstName}\nLast Name: ${invoice.customer.lastName}\n"
-        customerDetails += "Address: ${invoice.customer.address}\n"
-        binding.tvInvoicePreview.append(customerDetails)
+
     }
 
     private fun printInvoiceHeader(invoice: Invoice) {
@@ -32,6 +28,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun printCustomerDetails(){
-
+        var customerDetails = ""
+        customerDetails += "CUSTOMER\n"
+        customerDetails += "First Name: ${invoice.customer.firstName}\nLast Name: ${invoice.customer.lastName}\n"
+        customerDetails += "Address: ${invoice.customer.address}\n"
+        binding.tvInvoicePreview.append(customerDetails)
     }
 }
