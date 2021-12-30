@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         binding.tvInvoicePreview.text = invoiceHeader
     }
 
-    private fun printCustomerDetails(){
+    private fun printCustomerDetails(customer: Customer){
         var customerDetails = ""
         customerDetails += "CUSTOMER\n"
         customerDetails += "First Name: ${invoice.customer.firstName}\nLast Name: ${invoice.customer.lastName}\n"
