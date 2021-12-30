@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     private fun printInvoiceSheet(invoice: Invoice) {
         printInvoiceHeader(invoice)
         // print customer details
-
+        printCustomerDetails(invoice.customer)
     }
 
     private fun printInvoiceHeader(invoice: Invoice) {
