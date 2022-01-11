@@ -19,11 +19,9 @@ class MainActivity : AppCompatActivity() {
     private fun printInvoiceSheet(invoice: Invoice) {
         printInvoiceHeader(invoice)
         // print customer details
-        var customerDetails = ""
-        customerDetails += "CUSTOMER\n"
-        customerDetails += "First Name: ${invoice.customer.firstName}\nLast Name: ${invoice.customer.lastName}\n"
-        customerDetails += "Address: ${invoice.customer.address}\n"
-        binding.tvInvoicePreview.append(customerDetails)
+        binding.tvInvoicePreview.append("First Name: ${invoice.customer.firstName}" +
+                "\nLast Name: ${invoice.customer.lastName}\n")
+        binding.tvInvoicePreview.append("Address: ${invoice.customer.address}\n")
     }
 
     private fun printInvoiceHeader(invoice: Invoice) {
