@@ -21,13 +21,7 @@ class MainActivity : AppCompatActivity() {
         // print customer details
         binding.tvInvoicePreview.append("First Name: ${invoice.customer.firstName}" +
                 "\nLast Name: ${invoice.customer.lastName}\n")
-        val address = getAddress(invoice)
-        binding.tvInvoicePreview.append(address)
-    }
-
-    private fun getAddress(invoice: Invoice): String {
-        val address = "Address: ${invoice.customer.address}\n"
-        return address
+        binding.tvInvoicePreview.append("Address: ${invoice.customer.address}\n")
     }
 
     private fun printInvoiceHeader(invoice: Invoice) {
