@@ -19,19 +19,13 @@ class MainActivity : AppCompatActivity() {
     private fun printInvoiceSheet(invoice: Invoice) {
         printInvoiceHeader(invoice)
         // print customer details
-        val fullName = getFullName(invoice)
-        binding.tvInvoicePreview.append(fullName)
+        binding.tvInvoicePreview.append("First Name: ${invoice.customer.firstName}" +
+                "\nLast Name: ${invoice.customer.lastName}\n")
         val address = getAddress(invoice)
         binding.tvInvoicePreview.append(address)
     }
 
-    private fun getFullName(invoice: Invoice): String {
-        val fullName =
-            "First Name: ${invoice.customer.firstName}\nLast Name: ${invoice.customer.lastName}\n"
-        return fullName
-    }
-
-    private fun getAddress(invoice: Invoice) : String {
+    private fun getAddress(invoice: Invoice): String {
         val address = "Address: ${invoice.customer.address}\n"
         return address
     }
