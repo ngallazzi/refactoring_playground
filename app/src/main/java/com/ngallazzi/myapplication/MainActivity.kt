@@ -46,8 +46,9 @@ class MainActivity : AppCompatActivity() {
             binding.tvInvoicePreview.append(
                 item.product.unitPrice.toDoubleDigitsString().padEnd(20)
             )
+            val quantityPrice = item.product.unitPrice * item.quantity;
             binding.tvInvoicePreview.append(
-                (item.product.unitPrice * item.quantity + (item.product.unitPrice * item.quantity * vat/100.0)).toDoubleDigitsString()
+                (quantityPrice + (quantityPrice * vat / 100.0)).toDoubleDigitsString()
                     .plus("\t\n")
             )
         }
