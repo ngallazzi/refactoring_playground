@@ -23,9 +23,7 @@ class MainActivity : AppCompatActivity() {
             "First Name: ${invoice.customer.firstName}" +
                     "\nLast Name: ${invoice.customer.lastName}\n"
         )
-        // this local variable doesn't improve readability so much
-        val invoiceAddress = "Address: ${invoice.customer.address}\n"
-        binding.tvInvoicePreview.append(invoiceAddress);
+        binding.tvInvoicePreview.append("Address: ${invoice.customer.address}\n");
         printCustomerDetails(invoice.customer)
         printInvoiceItemsSection(invoice.items, 22.0)
     }
