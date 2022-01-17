@@ -18,6 +18,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun printInvoiceSheet(invoice: Invoice) {
         printInvoiceHeader(invoice)
+        // print customer details
+        binding.tvInvoicePreview.append("First Name: ${invoice.customer.firstName}" +
+                "\nLast Name: ${invoice.customer.lastName}\n")
+        binding.tvInvoicePreview.append("Address: ${invoice.customer.address}\n")
         printCustomerDetails(invoice.customer)
         printInvoiceItemsSection(invoice.items, 22.0)
     }
