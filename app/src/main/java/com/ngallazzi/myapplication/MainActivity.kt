@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.jakewharton.threetenabp.AndroidThreeTen
 import com.ngallazzi.myapplication.databinding.ActivityMainBinding
+import org.threeten.bp.LocalDate
+import org.threeten.bp.format.DateTimeFormatter
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -17,7 +19,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun printInvoiceSheet(invoice: Invoice) {
-        printInvoiceHeader(invoice)
+        printInvoiceHeader(
+            invoiceNumber = invoice.number,
+            invoiceDate = invoice.date,
+            format = DateTimeFormatter.ISO_DATE
+        )
         // print customer details
         binding.tvInvoicePreview.append(
             "First Name: ${invoice.customer.firstName}" +
@@ -28,8 +34,13 @@ class MainActivity : AppCompatActivity() {
         printInvoiceItemsSection(invoice.items, 22.0)
     }
 
-    private fun printInvoiceHeader(invoice: Invoice) {
-        val invoiceHeader = "INVOICE N° ${invoice.number}, ${invoice.date}\n\n"
+    private fun printInvoiceHeader(
+        invoiceNumber: Int,
+        invoiceDate: LocalDate,
+        format: DateTimeFormatter
+    ) {
+        val invoiceHeader =
+            "INVOICE N° ${invoiceNumber}, ${invoiceDate.format(format)}\n\n"
         binding.tvInvoicePreview.text = invoiceHeader
     }
 
