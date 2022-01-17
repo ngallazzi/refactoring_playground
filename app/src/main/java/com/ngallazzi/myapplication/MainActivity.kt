@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         printInvoiceHeader(
             invoiceNumber = invoice.number,
             invoiceDate = invoice.date,
-            f = DateTimeFormatter.ISO_DATE
+            format = DateTimeFormatter.ISO_DATE
         )
         // print customer details
         binding.tvInvoicePreview.append(
@@ -37,10 +37,10 @@ class MainActivity : AppCompatActivity() {
     private fun printInvoiceHeader(
         invoiceNumber: Int,
         invoiceDate: LocalDate,
-        f: DateTimeFormatter
+        format: DateTimeFormatter
     ) {
         val invoiceHeader =
-            "INVOICE N° ${invoiceNumber}, ${invoiceDate.format(f)}\n\n"
+            "INVOICE N° ${invoiceNumber}, ${invoiceDate.format(format)}\n\n"
         binding.tvInvoicePreview.text = invoiceHeader
     }
 
