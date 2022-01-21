@@ -35,7 +35,7 @@ object Utils {
 
     }
 
-    private fun provideRandomItems(context: Context): List<InvoiceItem> {
+    private fun provideRandomItems(): List<InvoiceItem> {
         val items = mutableListOf<InvoiceItem>()
         for (i in 1..Random.nextInt(2, 8)) {
             items.add(
@@ -56,7 +56,7 @@ object Utils {
             Random.nextInt(),
             provideRandomCustomer(context, locale),
             LocalDate.now(),
-            provideRandomItems(context)
+            provideRandomItems()
         )
     }
 }
