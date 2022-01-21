@@ -2,7 +2,6 @@ package com.ngallazzi.myapplication
 
 import android.content.Context
 import io.kimo.lib.faker.component.text.AddressComponent
-import io.kimo.lib.faker.component.text.LoremComponent
 import io.kimo.lib.faker.component.text.NameComponent
 import org.threeten.bp.LocalDate
 import java.text.DecimalFormat
@@ -11,7 +10,10 @@ import kotlin.random.Random
 
 object Utils {
 
-    val italianCustomer: Customer = Customer("Mario", "Rossi", "Via Roma 11")
+    private val italianCustomer: Customer = Customer(
+        "Mario",
+        "Rossi", "Via Roma 11"
+    )
 
     private fun provideItalianCustomer(): Customer {
         return italianCustomer
