@@ -20,7 +20,7 @@ object Utils {
     private fun provideRandomCustomer(context: Context, locale: Locale): Customer {
         return when (locale) {
             Locale.ITALIAN -> {
-                italianCustomer
+                provideItalianCustomer()
             }
             else -> {
                 Customer(
