@@ -6,15 +6,27 @@ import io.kimo.lib.faker.component.text.LoremComponent
 import io.kimo.lib.faker.component.text.NameComponent
 import org.threeten.bp.LocalDate
 import java.text.DecimalFormat
+import java.util.*
 import kotlin.random.Random
 
 object Utils {
-    private fun provideRandomCustomer(context: Context): Customer {
-        return Customer(
-            NameComponent(context).firstName(),
-            NameComponent(context).lastName(),
-            AddressComponent(context).randomText()
-        )
+
+    val italianCustomer: Customer = Customer("Mario", "Rossi", "Via Roma 11")
+
+    private fun provideRandomCustomer(context: Context, locale: Locale): Customer {
+        return when (locale) {
+            Locale.ITALIAN -> {
+                italianCustomer
+            }
+            else -> {
+                Customer(
+                    NameComponent(context).firstName(),
+                    NameComponent(context).lastName(),
+                    AddressComponent(context).randomText()
+                )
+            }
+        }
+
     }
 
     private fun provideRandomItems(context: Context): List<InvoiceItem> {
@@ -33,10 +45,10 @@ object Utils {
         return items
     }
 
-    fun getRandomInvoice(context: Context): Invoice {
+    fun getRandomInvoice(context: Context, locale: Locale): Invoice {
         return Invoice(
             Random.nextInt(),
-            provideRandomCustomer(context),
+            provideRandomCustomer(context, locale),
             LocalDate.now(),
             provideRandomItems(context)
         )
