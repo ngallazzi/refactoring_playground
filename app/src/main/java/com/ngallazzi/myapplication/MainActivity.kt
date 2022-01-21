@@ -9,29 +9,25 @@ import org.threeten.bp.format.DateTimeFormatter
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private val controller = MainActivityController()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AndroidThreeTen.init(this)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        printInvoiceSheet(Utils.getRandomInvoice(this, resources.configuration.locale))
-    }
 
-    private fun printInvoiceSheet(invoice: Invoice) {
+        controller.s = PrintingState.IDLE
+        val invoice = Utils.getRandomInvoice(this, resources.configuration.locale)
         printInvoiceHeader(
             invoiceNumber = invoice.number,
             invoiceDate = invoice.date,
             format = DateTimeFormatter.ISO_DATE
         )
-        // print customer details
-        binding.tvInvoicePreview.append(
-            "First Name: ${invoice.customer.firstName}" +
-                    "\nLast Name: ${invoice.customer.lastName}\n"
-        )
-        binding.tvInvoicePreview.append("Address: ${invoice.customer.address}\n");
+        controller.s = PrintingState.IN_PROGRESS
         printCustomerDetails(invoice.customer)
         printInvoiceItemsSection(invoice.items, 22.0)
+        controller.s = PrintingState.DONE
     }
 
     private fun printInvoiceHeader(
