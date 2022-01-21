@@ -17,17 +17,17 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        controller.s = PrintingState.IDLE
+        controller.setPrintingState(PrintingState.IDLE)
         val invoice = Utils.getRandomInvoice(this, resources.configuration.locale)
         printInvoiceHeader(
             invoiceNumber = invoice.number,
             invoiceDate = invoice.date,
             format = DateTimeFormatter.ISO_DATE
         )
-        controller.s = PrintingState.IN_PROGRESS
+        controller.setPrintingState(PrintingState.IN_PROGRESS)
         printCustomerDetails(invoice.customer)
         printInvoiceItemsSection(invoice.items, 22.0)
-        controller.s = PrintingState.DONE
+        controller.setPrintingState(PrintingState.DONE)
     }
 
     private fun printInvoiceHeader(
