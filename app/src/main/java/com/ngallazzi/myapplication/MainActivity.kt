@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         AndroidThreeTen.init(this)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        printInvoiceSheet(Utils.getRandomInvoice(this))
+        printInvoiceSheet(Utils.getRandomInvoice(this, resources.configuration.locale))
     }
 
     private fun printInvoiceSheet(invoice: Invoice) {
