@@ -1,5 +1,13 @@
 package com.ngallazzi.myapplication
 
 class MainActivityController {
-    var s: PrintingState = PrintingState.UNDEFINED
+    private var s: PrintingState = PrintingState.UNDEFINED
+
+    fun setPrintingState(newState: PrintingState) {
+        s = newState
+    }
+
+    fun getPrintingState(): PrintingState {
+        return s;
+    }
 }
