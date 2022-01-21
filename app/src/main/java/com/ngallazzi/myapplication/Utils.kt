@@ -13,6 +13,10 @@ object Utils {
 
     val italianCustomer: Customer = Customer("Mario", "Rossi", "Via Roma 11")
 
+    private fun provideItalianCustomer(): Customer {
+        return italianCustomer
+    }
+
     private fun provideRandomCustomer(context: Context, locale: Locale): Customer {
         return when (locale) {
             Locale.ITALIAN -> {
