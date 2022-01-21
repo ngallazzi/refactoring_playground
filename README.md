@@ -6,7 +6,7 @@ A repo to work to the most known refactoring practices provided in Martin Fowler
 - [x] Inline variable
 - [x] Change function declaration
 - [x] Encapsulate variable
-- [ ] Rename variable
+- [x] Rename variable
 - [ ] Introduce parameter object
 - [ ] Combine functions into class
 - [ ] Combine function into transform
