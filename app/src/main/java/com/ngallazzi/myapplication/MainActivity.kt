@@ -1,6 +1,7 @@
 package com.ngallazzi.myapplication
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.jakewharton.threetenabp.AndroidThreeTen
 import com.ngallazzi.myapplication.databinding.ActivityMainBinding
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         printCustomerDetails(invoice.customer)
         printInvoiceItemsSection(invoice.items, 22.0)
         controller.setPrintingState(PrintingState.DONE)
+        Log.v(TAG, "Print state: ${controller.getPrintingState().name}")
     }
 
     private fun printInvoiceHeader(
@@ -66,5 +68,9 @@ class MainActivity : AppCompatActivity() {
                     .plus("\t\n")
             )
         }
+    }
+
+    companion object {
+        const val TAG = "MainActivity"
     }
 }
