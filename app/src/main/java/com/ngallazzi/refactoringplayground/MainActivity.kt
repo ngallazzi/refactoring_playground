@@ -11,18 +11,20 @@ import org.threeten.bp.format.DateTimeFormatter
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val controller = MainActivityController()
+    private lateinit var printingHelper: PrintingHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AndroidThreeTen.init(this)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        printingHelper = PrintingHelper(binding.tvInvoicePreview)
 
         controller.setPrintingState(PrintingState.IDLE)
         val invoice = Utils.getRandomInvoice(this, resources.configuration.locale)
 
         val invoiceHeader = InvoiceHeader(invoice.number, invoice.date)
-        printInvoiceHeader(invoiceHeader)
+        printingHelper.printInvoiceHeader(invoiceHeader)
         controller.setPrintingState(PrintingState.IN_PROGRESS)
 
         printCustomerDetails(invoice.customer)
@@ -30,10 +32,6 @@ class MainActivity : AppCompatActivity() {
         controller.setPrintingState(PrintingState.DONE)
 
         Log.v(TAG, "Print state: ${controller.getPrintingState().name}")
-    }
-
-    private fun printInvoiceHeader(header: InvoiceHeader) {
-        binding.tvInvoicePreview.text = header.toString()
     }
 
     private fun printCustomerDetails(customer: Customer) {
