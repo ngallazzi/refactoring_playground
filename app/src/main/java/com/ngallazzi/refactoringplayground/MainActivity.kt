@@ -1,10 +1,10 @@
-package com.ngallazzi.myapplication
+package com.ngallazzi.refactoringplayground
 
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.jakewharton.threetenabp.AndroidThreeTen
-import com.ngallazzi.myapplication.databinding.ActivityMainBinding
+import com.ngallazzi.refactoringplayground.databinding.ActivityMainBinding
 import org.threeten.bp.LocalDate
 import org.threeten.bp.format.DateTimeFormatter
 
@@ -20,26 +20,20 @@ class MainActivity : AppCompatActivity() {
 
         controller.setPrintingState(PrintingState.IDLE)
         val invoice = Utils.getRandomInvoice(this, resources.configuration.locale)
-        printInvoiceHeader(
-            invoiceNumber = invoice.number,
-            invoiceDate = invoice.date,
-            format = DateTimeFormatter.ISO_DATE
-        )
+
+        val invoiceHeader = InvoiceHeader(invoice.number, invoice.date)
+        printInvoiceHeader(invoiceHeader)
         controller.setPrintingState(PrintingState.IN_PROGRESS)
+
         printCustomerDetails(invoice.customer)
         printInvoiceItemsSection(invoice.items, 22.0)
         controller.setPrintingState(PrintingState.DONE)
+
         Log.v(TAG, "Print state: ${controller.getPrintingState().name}")
     }
 
-    private fun printInvoiceHeader(
-        invoiceNumber: Int,
-        invoiceDate: LocalDate,
-        format: DateTimeFormatter
-    ) {
-        val invoiceHeader =
-            "INVOICE N° ${invoiceNumber}, ${invoiceDate.format(format)}\n\n"
-        binding.tvInvoicePreview.text = invoiceHeader
+    private fun printInvoiceHeader(header: InvoiceHeader) {
+        binding.tvInvoicePreview.text = header.toString()
     }
 
     private fun printCustomerDetails(customer: Customer) {

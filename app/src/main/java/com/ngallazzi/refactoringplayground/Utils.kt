@@ -1,4 +1,4 @@
-package com.ngallazzi.myapplication
+package com.ngallazzi.refactoringplayground
 
 import android.content.Context
 import io.kimo.lib.faker.component.text.AddressComponent
