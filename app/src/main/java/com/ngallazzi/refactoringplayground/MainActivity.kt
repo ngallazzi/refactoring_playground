@@ -27,20 +27,14 @@ class MainActivity : AppCompatActivity() {
         printingHelper.printInvoiceHeader(invoiceHeader)
         controller.setPrintingState(PrintingState.IN_PROGRESS)
 
-        printCustomerDetails(invoice.customer)
+        printingHelper.printCustomerDetails(invoice.customer)
         printInvoiceItemsSection(invoice.items, 22.0)
         controller.setPrintingState(PrintingState.DONE)
 
         Log.v(TAG, "Print state: ${controller.getPrintingState().name}")
     }
 
-    private fun printCustomerDetails(customer: Customer) {
-        var customerDetails = ""
-        customerDetails += "CUSTOMER\n"
-        customerDetails += "First Name: ${customer.firstName}\nLast Name: ${customer.lastName}\n"
-        customerDetails += "Address: ${customer.address}\n"
-        binding.tvInvoicePreview.append("$customerDetails\n")
-    }
+
 
 
     private fun printInvoiceItemsSection(items: List<InvoiceItem>, vat: Double) {
