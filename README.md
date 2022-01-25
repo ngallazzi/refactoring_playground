@@ -8,6 +8,6 @@ A repo to work to the most known refactoring practices provided in Martin Fowler
 - [x] Encapsulate variable
 - [x] Rename variable
 - [x] Introduce parameter object
-- [ ] Combine functions into class
+- [x] Combine functions into class
 - [ ] Combine function into transform
 - [ ] Split phase
