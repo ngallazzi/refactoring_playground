@@ -28,32 +28,11 @@ class MainActivity : AppCompatActivity() {
         controller.setPrintingState(PrintingState.IN_PROGRESS)
 
         printingHelper.printCustomerDetails(invoice.customer)
-        printInvoiceItemsSection(invoice.items, 22.0)
+
+        printingHelper.printInvoiceItemsSection(invoice.items, 22.0)
         controller.setPrintingState(PrintingState.DONE)
 
         Log.v(TAG, "Print state: ${controller.getPrintingState().name}")
-    }
-
-
-
-
-    private fun printInvoiceItemsSection(items: List<InvoiceItem>, vat: Double) {
-        binding.tvInvoicePreview.append("QTY \t DESCRIPTION \t UNIT PRICE \t AMOUNT\n")
-        for (item in items) {
-            binding.tvInvoicePreview.append(item.quantity.toString().padEnd(20))
-            binding.tvInvoicePreview.append(
-                item.product.description.padEnd(15)
-            )
-            binding.tvInvoicePreview.append(
-                item.product.unitPrice.toDoubleDigitsString().padEnd(20)
-            )
-            val quantityPrice = item.product.unitPrice * item.quantity;
-            val vatPercentage = vat / 100.0
-            binding.tvInvoicePreview.append(
-                (quantityPrice + (quantityPrice * vatPercentage)).toDoubleDigitsString()
-                    .plus("\t\n")
-            )
-        }
     }
 
     companion object {

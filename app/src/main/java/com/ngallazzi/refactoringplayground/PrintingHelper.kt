@@ -14,4 +14,23 @@ class PrintingHelper(private val destination: TextView) {
         customerDetails += "Address: ${customer.address}\n"
         destination.append("$customerDetails\n")
     }
+
+    fun printInvoiceItemsSection(items: List<InvoiceItem>, vat: Double) {
+        destination.append("QTY \t DESCRIPTION \t UNIT PRICE \t AMOUNT\n")
+        for (item in items) {
+            destination.append(item.quantity.toString().padEnd(20))
+            destination.append(
+                item.product.description.padEnd(15)
+            )
+            destination.append(
+                item.product.unitPrice.toDoubleDigitsString().padEnd(20)
+            )
+            val quantityPrice = item.product.unitPrice * item.quantity;
+            val vatPercentage = vat / 100.0
+            destination.append(
+                (quantityPrice + (quantityPrice * vatPercentage)).toDoubleDigitsString()
+                    .plus("\t\n")
+            )
+        }
+    }
 }
