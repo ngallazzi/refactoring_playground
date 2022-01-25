@@ -1,4 +1,4 @@
-package com.ngallazzi.myapplication
+package com.ngallazzi.refactoringplayground
 
 class MainActivityController {
     private var printingState: PrintingState = PrintingState.UNDEFINED

@@ -1,10 +1,10 @@
-package com.ngallazzi.myapplication
+package com.ngallazzi.refactoringplayground
 
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.jakewharton.threetenabp.AndroidThreeTen
-import com.ngallazzi.myapplication.databinding.ActivityMainBinding
+import com.ngallazzi.refactoringplayground.databinding.ActivityMainBinding
 import org.threeten.bp.LocalDate
 import org.threeten.bp.format.DateTimeFormatter
 

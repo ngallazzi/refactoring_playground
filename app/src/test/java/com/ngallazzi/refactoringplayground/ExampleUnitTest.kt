@@ -1,4 +1,4 @@
-package com.ngallazzi.myapplication
+package com.ngallazzi.refactoringplayground
 
 import org.junit.Test
 
