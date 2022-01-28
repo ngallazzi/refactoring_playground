@@ -1,6 +1,8 @@
 package com.ngallazzi.refactoringplayground
 
 import android.widget.TextView
+import org.threeten.bp.LocalDateTime
+import org.threeten.bp.format.DateTimeFormatter
 
 class PrintingHelper(private val destination: TextView) {
     fun printInvoiceHeader(header: InvoiceHeader) {
@@ -32,5 +34,11 @@ class PrintingHelper(private val destination: TextView) {
                     .plus("\t\n")
             )
         }
+    }
+
+    fun printPrintingInfo(printTimeStamp: LocalDateTime, author: String) {
+        destination.append(
+            """Printed on:${DateTimeFormatter.ISO_DATE.format(printTimeStamp)} by $author"""
+        )
     }
 }
