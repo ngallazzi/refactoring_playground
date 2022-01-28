@@ -13,11 +13,7 @@ class MainActivityController {
         return printingState;
     }
 
-    fun addAuthor(invoice: Invoice, author: String): Invoice {
-        return invoice.copy(printingAuthor = author)
-    }
-
-    fun addPrintTimeStamp(invoice: Invoice, timeStamp: LocalDateTime): Invoice {
-        return invoice.copy(printTimeStamp = timeStamp)
+    fun enrichInvoice(invoice: Invoice, author: String, timeStamp: LocalDateTime): Invoice {
+        return invoice.copy(printingAuthor = author, printTimeStamp = timeStamp)
     }
 }

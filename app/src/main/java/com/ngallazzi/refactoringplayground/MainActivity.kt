@@ -23,8 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         controller.setPrintingState(PrintingState.IDLE)
         var invoice = Utils.getRandomInvoice(this, resources.configuration.locale)
-        invoice = controller.addAuthor(invoice, "Nicola")
-        invoice = controller.addPrintTimeStamp(invoice, LocalDateTime.now())
+        invoice = controller.enrichInvoice(invoice,"Nicola", LocalDateTime.now())
 
         val invoiceHeader = InvoiceHeader(invoice.number, invoice.date)
         printingHelper.printInvoiceHeader(invoiceHeader)

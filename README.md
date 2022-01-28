@@ -9,5 +9,5 @@ A repo to work to the most known refactoring practices provided in Martin Fowler
 - [x] Rename variable
 - [x] Introduce parameter object
 - [x] Combine functions into class
-- [ ] Combine function into transform
+- [x] Combine function into transform
 - [ ] Split phase
