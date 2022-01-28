@@ -20,4 +20,8 @@ class MainActivityController {
     fun addPrintTimeStamp(invoice: Invoice, timeStamp: LocalDateTime): Invoice {
         return invoice.copy(printTimeStamp = timeStamp)
     }
+
+    fun enrichInvoice(invoice: Invoice, author: String, timeStamp: LocalDateTime) : Invoice {
+        // TODO
+    }
 }
