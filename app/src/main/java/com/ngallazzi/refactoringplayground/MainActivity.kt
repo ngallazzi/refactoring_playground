@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.jakewharton.threetenabp.AndroidThreeTen
 import com.ngallazzi.refactoringplayground.databinding.ActivityMainBinding
 import org.threeten.bp.LocalDate
+import org.threeten.bp.LocalDateTime
 import org.threeten.bp.format.DateTimeFormatter
 
 class MainActivity : AppCompatActivity() {
@@ -21,7 +22,8 @@ class MainActivity : AppCompatActivity() {
         printingHelper = PrintingHelper(binding.tvInvoicePreview)
 
         controller.setPrintingState(PrintingState.IDLE)
-        val invoice = Utils.getRandomInvoice(this, resources.configuration.locale)
+        var invoice = Utils.getRandomInvoice(this, resources.configuration.locale)
+        invoice = controller.enrichInvoice(invoice,"Nicola", LocalDateTime.now())
 
         val invoiceHeader = InvoiceHeader(invoice.number, invoice.date)
         printingHelper.printInvoiceHeader(invoiceHeader)
