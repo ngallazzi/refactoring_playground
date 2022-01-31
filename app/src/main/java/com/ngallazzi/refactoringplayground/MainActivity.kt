@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         controller.setPrintingState(PrintingState.IDLE)
         var invoice = Utils.getRandomInvoice(this, resources.configuration.locale)
-        invoice = controller.enrichInvoice(invoice,"Nicola", LocalDateTime.now())
+        invoice = controller.enrichInvoice(invoice, "Nicola", LocalDateTime.now())
 
         val invoiceHeader = InvoiceHeader(invoice.number, invoice.date)
         printingHelper.printInvoiceHeader(invoiceHeader)
@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         printingHelper.printCustomerDetails(invoice.customer)
 
         printingHelper.printInvoiceItemsSection(invoice.items, 22.0)
+        printingHelper.printMustBePayedByDisclaimer(invoice)
         controller.setPrintingState(PrintingState.DONE)
 
         Log.v(TAG, "Print state: ${controller.getPrintingState().name}")
