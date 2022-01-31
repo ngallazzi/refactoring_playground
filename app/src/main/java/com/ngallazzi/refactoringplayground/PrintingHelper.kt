@@ -1,5 +1,6 @@
 package com.ngallazzi.refactoringplayground
 
+import android.annotation.SuppressLint
 import android.widget.TextView
 import org.threeten.bp.LocalDateTime
 import org.threeten.bp.format.DateTimeFormatter
@@ -36,9 +37,13 @@ class PrintingHelper(private val destination: TextView) {
         }
     }
 
-    fun printPrintingInfo(printTimeStamp: LocalDateTime, author: String) {
-        destination.append(
-            """Printed on:${DateTimeFormatter.ISO_DATE.format(printTimeStamp)} by $author"""
-        )
+    @SuppressLint("SetTextI18n")
+    fun printMustBePayedByDisclaimer(invoice: Invoice) {
+        val daysToAdd = 30L
+        destination.text = ("Pay by: " + invoice.date.plusDays(daysToAdd).dayOfMonth + "/"
+                + invoice.date.month + "/" + invoice.date.year) + "\n" +
+                " COORDINATES: IBAN: IT40L0200805364000030085962 " +
+                "SWIFT: UNCRITMMORR Unicredit Banca\n" +
+                "\n "
     }
 }
