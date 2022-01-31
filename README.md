@@ -10,4 +10,4 @@ A repo to work to the most known refactoring practices provided in Martin Fowler
 - [x] Introduce parameter object
 - [x] Combine functions into class
 - [x] Combine function into transform
-- [ ] Split phase
+- [x] Split phase
