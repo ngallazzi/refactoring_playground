@@ -41,15 +41,18 @@ class PrintingHelper(private val destination: TextView) {
     @SuppressLint("SetTextI18n")
     fun printMustBePayedByDisclaimer(invoice: Invoice) {
         val payBy = getPayBy(invoiceDate = invoice.date)
-        destination.text = payBy + "\n" +
-                " COORDINATES: IBAN: IT40L0200805364000030085962 " +
-                "SWIFT: UNCRITMMORR Unicredit Banca\n" +
-                "\n "
+        val bankCoordinates = getBankCoordinates()
+        destination.text = payBy + "\n" + bankCoordinates
     }
 
     private fun getPayBy(invoiceDate: LocalDate): String {
         val daysToAdd = 30L
         return ("""Pay by: ${invoiceDate.plusDays(daysToAdd).dayOfMonth}
             /${invoiceDate.month}/${invoiceDate.year}""".trimMargin())
+    }
+
+    private fun getBankCoordinates(): String {
+        return "COORDINATES: IBAN: IT40L0200805364000030085962 " +
+                "SWIFT: UNCRITMMORR Unicredit Banca\n"
     }
 }
