@@ -9,6 +9,6 @@ data class InvoiceHeader(private val number: Int, private val date: LocalDate) {
     }
 
     companion object {
-        val formatter: DateTimeFormatter = DateTimeFormatter.ISO_DATE;
+        val formatter: DateTimeFormatter = DateTimeFormatter.ISO_DATE
     }
 }

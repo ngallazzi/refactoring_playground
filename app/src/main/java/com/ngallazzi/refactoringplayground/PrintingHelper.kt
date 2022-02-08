@@ -3,8 +3,6 @@ package com.ngallazzi.refactoringplayground
 import android.annotation.SuppressLint
 import android.widget.TextView
 import org.threeten.bp.LocalDate
-import org.threeten.bp.LocalDateTime
-import org.threeten.bp.format.DateTimeFormatter
 
 class PrintingHelper(private val destination: TextView) {
     fun printInvoiceHeader(header: InvoiceHeader) {
@@ -29,7 +27,7 @@ class PrintingHelper(private val destination: TextView) {
             destination.append(
                 item.product.unitPrice.toDoubleDigitsString().padEnd(20)
             )
-            val quantityPrice = item.product.unitPrice * item.quantity;
+            val quantityPrice = item.product.unitPrice * item.quantity
             val vatPercentage = vat / 100.0
             destination.append(
                 (quantityPrice + (quantityPrice * vatPercentage)).toDoubleDigitsString()

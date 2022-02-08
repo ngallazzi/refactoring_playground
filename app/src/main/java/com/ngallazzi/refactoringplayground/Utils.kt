@@ -32,7 +32,6 @@ object Utils {
                 )
             }
         }
-
     }
 
     private fun provideRandomItems(): List<InvoiceItem> {

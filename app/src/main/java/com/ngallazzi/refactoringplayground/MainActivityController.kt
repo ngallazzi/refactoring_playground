@@ -10,7 +10,7 @@ class MainActivityController {
     }
 
     fun getPrintingState(): PrintingState {
-        return printingState;
+        return printingState
     }
 
     fun enrichInvoice(invoice: Invoice, author: String, timeStamp: LocalDateTime): Invoice {
